@@ -1,0 +1,145 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="css/font.css">
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=0.83">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="images/app-icon.png">
+<!--<script src="http://localhost:8080/target/target-script-min.js#windows"></script>-->
+<style>
+  html { 
+    -ms-touch-action: none;
+  }
+</style>
+<meta charset="UTF-8">
+<script src="lib/util.js"></script>
+<script src="lib/KeyController.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/SceneManager.js"></script>
+<script src="js/Game.js"></script>
+<script src="js/Menu.js"></script>
+<script src="js/Main.js"></script>
+<script src="js/Player.js"></script>
+<script src="js/Enemy.js"></script>
+<script src="js/EnemyManager.js"></script>
+<script src="js/Pickup.js"></script>
+<script src="./js/LevelManager.js"></script>
+<script src="js/Bullet.js"></script>
+<script src="js/Stick.js"></script>
+<script src="js/CollisionManager.js"></script>
+<script src="js/Boss.js"></script>
+<script src="js/Obstacle.js"></script>
+<script src="js/CanvasText-0.4.1.js"></script>
+<script src="js/AssetManager.js"></script>
+<script src="js/TextManager.js"></script>
+<script src="js/Client.js"></script>
+<script src="js/FSM.js"></script>
+<script src="js/Shop.js"></script>
+<script src="js/Bomb.js"></script>
+<script src="js/ParallelArray.js"></script>
+<script src="js/SoundManager.js"></script>
+<script src="js/Account.js"></script>
+
+<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Dosis'>
+<style>
+
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	.score {
+		font-family: "osr";
+	}
+
+	.instructions{
+		font-family: "osr";
+	}
+
+	p {
+		display: none;
+	}
+</style>
+
+
+</head>
+<body onload="main();">
+	<script id = "getHeight" type = jquery> 
+		$(window).height(); 
+	</script>
+		<script id = "getWidth" type = jquery> 
+		$(window).width(); 
+	</script>
+
+<script>
+	function registerPlayer(name,pass){
+		alert(name, pass);
+	}
+</script>
+
+
+<script>
+	function destroyIframe(name,pass,money,shield,dmg,bomb,health,reload,radar){
+		var iframes = document.getElementsByTagName('iframe');
+		for (var i = 0; i < iframes.length; i++) {
+			iframes[i].parentNode.removeChild(iframes[i]);
+		}
+		var can = document.getElementById('canvasId');
+		can.style.visibility = "visible";
+
+		account.setVals(name,pass,money,shield,dmg,bomb,health,reload,radar);
+	}
+</script>
+<!--<iframe id = "registerpage" src="register.html"></iframe>-->
+
+<!--This is where all of the game text can be written and pulled onto the gamescreen-->
+<noembed id="txtLoading"></noembed>
+<noembed id="txtConnecting"></noembed>
+<noembed id="txtBoss1"></noembed>
+<noembed id="txtBoss2"></noembed>
+<noembed id="txtAmmo"></noembed>
+<noembed id="txtHealth"></noembed>
+<noembed id="txtCoins"></noembed>
+<noembed id="playerDeathMsg"></noembed>
+<noembed id="tutorialMsg1"></noembed>
+<noembed id="tutorialMsg2"></noembed>
+<noembed id="tutorialMsg3"></noembed>
+<noembed id="tutorialMsg4"></noembed>
+<noembed id="tutorialMsg1PC"></noembed>
+<noembed id="tutorialMsg2PC"></noembed>
+<noembed id="tutorialMsg3PC"></noembed>
+<noembed id="tutorialMsg4PC"></noembed>
+<noembed id="tutorialMsg5"></noembed>
+
+<script>
+	if(window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.open("GET","../xml/xmlTest.xml",false);
+	xmlhttp.send();
+	xmlDoc=xmlhttp.responseXML;
+	document.getElementById("txtLoading").innerHTML= xmlDoc.getElementsByTagName("txtLoading")[0].childNodes[0].nodeValue;
+	document.getElementById("txtConnecting").innerHTML= xmlDoc.getElementsByTagName("txtConnecting")[0].childNodes[0].nodeValue;
+	document.getElementById("txtAmmo").innerHTML= xmlDoc.getElementsByTagName("txtAmmo")[0].childNodes[0].nodeValue;
+	document.getElementById("txtHealth").innerHTML= xmlDoc.getElementsByTagName("txtHealth")[0].childNodes[0].nodeValue;
+	document.getElementById("txtCoins").innerHTML= xmlDoc.getElementsByTagName("txtCoins")[0].childNodes[0].nodeValue;
+	document.getElementById("txtBoss1").innerHTML= xmlDoc.getElementsByTagName("txtBoss1")[0].childNodes[0].nodeValue;
+	document.getElementById("txtBoss2").innerHTML= xmlDoc.getElementsByTagName("txtBoss2")[0].childNodes[0].nodeValue;
+	document.getElementById("playerDeathMsg").innerHTML= xmlDoc.getElementsByTagName("playerDeathMsg")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg1").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg1")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg2").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg2")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg3").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg3")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg4").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg4")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg1PC").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg1PC")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg2PC").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg2PC")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg3PC").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg3PC")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg4PC").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg4PC")[0].childNodes[0].nodeValue;
+	document.getElementById("tutorialMsg5").innerHTML= xmlDoc.getElementsByTagName("tutorialMsg5")[0].childNodes[0].nodeValue;
+</script>
+</body>
+</html>
